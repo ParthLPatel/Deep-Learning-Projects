@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VGG19 ImageNet Classifier</title>
+</head>
+<body>
+    <h2>Image Classifier</h2>
+
+    <div>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Upload">
+        </form>
+
+        <!-- showing the uploaded img -->
+        {% if img_obj %}
+            <h3>Successfully Uploaded...</h3>
+            <img src="{{img_obj.image.url}}" alt="connect" style="max-height:300px">
+
+        {% endif%}
+
+        <h3>Prediction Label:{{prediction_label}}</h3>
+    </div>
+
+</body>
+</html>
